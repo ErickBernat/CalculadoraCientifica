@@ -33,7 +33,10 @@
         background-color: rgb(212, 212, 212);
         color: black;
     }
+}
 
-
+.teclaPressionada{
+        background-color: rgb(212, 212, 212) !important;
+        color: black !important;
 }
 
