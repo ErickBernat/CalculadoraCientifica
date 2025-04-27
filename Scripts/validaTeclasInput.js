@@ -1,12 +1,12 @@
 import { ativaTeclaVirtual } from "./ativaTeclaVirtual.js";
 
 const input = document.getElementById('inputCalculadora');
-const regexTeclas =/^[0-9spactxreSPACTXRE\/\-!\.=+\(\)]*$/;
+const regexTeclas =/^[0-9spactxreSPACTXRE\/\-!%\.=+\(\)]*$/;
 let tecla = ''
 
 export function validaContaInput(){
     input.addEventListener('keydown',(evento)=>{
-        tecla = evento.key
+        tecla = (evento.key).toLocaleUpperCase()
         verificaTeclaPressionada(tecla,regexTeclas);
         ativaTeclaVirtual(tecla)
         input.removeAttribute('disabled');
@@ -14,8 +14,7 @@ export function validaContaInput(){
 }
 
 function verificaTeclaPressionada(tecla,validacao){
-    console.log(tecla)
-    if(tecla === 'Backspace' || tecla.includes('Arrow') || tecla === 'Enter'){
+    if(tecla === 'BACKSPACE' || tecla.includes('ARROW') || tecla === 'ENTER'|| tecla == 'SHIFT'){
         return
     }
     if(validacao.test(tecla)){

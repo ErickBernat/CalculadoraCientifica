@@ -1,7 +1,7 @@
 .displayCalculadora{
     width: 90%;
     height: 20%;
-
+    min-width: 600px;
     border: none;
     background-color: transparent;
     border-radius: 20px;

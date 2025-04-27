@@ -1,15 +1,14 @@
-
-body{
+body {
     width: 100vw;
     height: 100vh;
 }
 .sectionCalculadora{
     width: 100%;
     height: 100vh;
+    overflow: auto;
     background-color: rgb(139, 137, 255);
-    background-image: url(/Assets/Images/c4aeb73d7209f481cf7b4e1c2955c3b8-design-de-logotipo-de-matematica.webp);
     background-repeat: no-repeat;
-    background-size: 20vw;
+    background-size: 350px;
     background-position:center -3vw;
     display: flex;
     align-items: center;
