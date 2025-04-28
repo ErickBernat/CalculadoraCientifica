@@ -13,13 +13,11 @@ export function validaExpressao(expressao, tecla){
 
 export function validaOperadoresExpressao(expressao,tecla){
     expressao = inputCalculadora.value
-
     if(expressao === '0' || expressao.value === null){
         inputCalculadora.setAttribute('disabled', 'true');      
     } 
     if(regexValidaOperador.test(expressao)){
         inputCalculadora.setAttribute('disabled', 'true'); 
     }
-    
 }
 
