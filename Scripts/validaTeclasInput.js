@@ -57,6 +57,7 @@ function verificaInputVazio(){
 
 
 function verificaLetraOperacao(tecla){
+    expressao = input.value
     switch (tecla) {
         case 'E':
             if(inputCalculadora.value == ''){
@@ -65,7 +66,7 @@ function verificaLetraOperacao(tecla){
             input.value +='^'
             break;
         case 'R':
-            input.value +='√'
+            input.value +='√('
             break;
         case 'P':
             if(inputCalculadora.value == ''){
@@ -74,13 +75,13 @@ function verificaLetraOperacao(tecla){
             input.value +='%'
             break;
         case 'S':
-            input.value +='sin('
+            validaSenoCosTang('sin(')
             break;
         case 'T':
-            input.value +='tan('
+            validaSenoCosTang('tan(')
             break;
         case 'C':
-            input.value +='cos('
+            validaSenoCosTang('cos(')
             break;
         case 'X':
             if(inputCalculadora.value == ''){
@@ -99,5 +100,12 @@ function verificaLetraOperacao(tecla){
             break;
         default:
             break;
+    }
+}
+
+function validaSenoCosTang(operacao){
+    if(regexOperadores.test(expressao[expressao.length-1]) || expressao == '' || expressao[expressao.length-1] == '*' && expressao[expressao.length-1] != ')'){
+        console.log('entrou')
+         input.value +=operacao
     }
 }
