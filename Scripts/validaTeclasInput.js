@@ -1,24 +1,51 @@
 import { ativaTeclaVirtual } from "./ativaTeclaVirtual.js";
+import { validaExpressao } from "./validaExpressao.js";
 
 const input = document.getElementById('inputCalculadora');
-const regexTeclas =/^[0-9spactxreSPACTXRE\/\-!%\.=+\(\)]*$/;
+const regexNumeros =/^[0-9]*$/;
+const regexOperadores = /[%÷x√\-!\.=+]/;
 let tecla = ''
+let expressao = ''
 
-export function validaContaInput(){
+export function validaTeclaInput(){
     input.addEventListener('keydown',(evento)=>{
-        tecla = (evento.key).toLocaleUpperCase()
-        verificaTeclaPressionada(tecla,regexTeclas);
-        ativaTeclaVirtual(tecla)
+        tecla = (evento.key).toLocaleUpperCase();
+        expressao = input.value;
+        verificaTeclaPressionada(tecla);
+        ativaTeclaVirtual(tecla);
         input.removeAttribute('disabled');
     })
 }
 
-function verificaTeclaPressionada(tecla,validacao){
-    if(tecla === 'BACKSPACE' || tecla.includes('ARROW') || tecla === 'ENTER'|| tecla == 'SHIFT'){
+export function verificaTeclaPressionada(tecla){
+    if(regexOperadores.test(tecla)){
+        validaExpressao(expressao, tecla);
         return
     }
-    if(validacao.test(tecla)){
+    if (verificaTeclasNulas(tecla)){
         return
     }
+    if(regexNumeros.test(tecla)){
+        verificaInputVazio()
+        return
+    }
+
     input.setAttribute('disabled', 'true');
+}
+
+
+export function verificaTeclasNulas(tecla){
+    if(tecla === 'ENTER'){
+        realizaConta()
+    }
+    if(tecla === 'BACKSPACE' || tecla.includes('ARROW') || tecla == 'SHIFT'){
+        return true
+    }
+    return false
+}
+
+function verificaInputVazio(){
+    if(input.value == 0 && tecla != '0'){
+        input.value = ''
+    }
 }

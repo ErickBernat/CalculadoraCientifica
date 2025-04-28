@@ -1,3 +1,8 @@
-import { validaContaInput} from "./Scripts/validaTeclasInput.js";
+import { realizaConta } from "./Scripts/realizaConta.js";
+import { validaExpressao } from "./Scripts/validaExpressao.js";
+import { validaTeclaInput} from "./Scripts/validaTeclasInput.js";
 
-validaContaInput();
+
+validaTeclaInput()
+
+console.log(realizaConta(10+10/2))
