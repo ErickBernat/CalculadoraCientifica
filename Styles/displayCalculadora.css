@@ -22,4 +22,7 @@
         background-color: rgb(123, 121, 255);
         cursor: pointer;
     }
+    input::placeholder{
+        color: white;
+    }
 }

@@ -1,9 +1,7 @@
-import { verificaTeclasNulas } from "./validaTeclasInput.js";
+
 
 const inputCalculadora = document.getElementById('inputCalculadora');
-const regexValidaOperador = /([+\-*/]{2,})(?![-+*/]*-)/;
-let tecla = '';
-let expressao = ''
+const regexValidaOperador =  /[+\-*/]{2,}/
 
 
 export function validaExpressao(expressao, tecla){
@@ -12,12 +10,29 @@ export function validaExpressao(expressao, tecla){
 
 
 export function validaOperadoresExpressao(expressao,tecla){
-    expressao = inputCalculadora.value
-    if(expressao === '0' || expressao.value === null){
-        inputCalculadora.setAttribute('disabled', 'true');      
-    } 
-    if(regexValidaOperador.test(expressao)){
-        inputCalculadora.setAttribute('disabled', 'true'); 
+    if(inputCalculadora.value == '' && tecla != '(' && tecla != ')' && tecla != '-'){
+        return
     }
+
+    if(regexValidaOperador.test(expressao)){
+        return
+    }
+
+    inputCalculadora.value +=`${tecla}`
 }
 
+
+export function formataExpressao(expressao){
+    expressao = expressao.replaceAll("sin(","Math.sin(");
+    expressao = expressao.replaceAll("cos(","Math.cos(");
+    expressao = expressao.replaceAll("tan(","Math.tan(");
+    expressao = expressao.replaceAll("%","/100");
+    expressao = expressao.replaceAll("^","**");
+    return expressao
+}
+
+
+
+function trocaOperador(expressao,operador,operacao){
+    expressao.replace(operador, operacao);
+}

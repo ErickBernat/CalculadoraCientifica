@@ -4,72 +4,98 @@ import { validaExpressao } from "./validaExpressao.js";
 
 const input = document.getElementById('inputCalculadora');
 const regexNumeros =/^[0-9]*$/;
-const regexOperadores = /[%÷x√\-!\.=+]/;
+const regexOperadores = /[÷x√/\-!()\.+]/;
 let tecla = ''
 let expressao = ''
 
 export function validaTeclaInput(){
-    input.addEventListener('keydown',(evento)=>{
+    document.addEventListener('keydown',(evento)=>{
         tecla = (evento.key).toLocaleUpperCase();
-        expressao = input.value;
-
         verificaTeclaPressionada(tecla);
         ativaTeclaVirtual(tecla);
-        input.removeAttribute('disabled');
     })
 }
 
 export function verificaTeclaPressionada(tecla){
+    expressao = input.value;
+    verificaInputVazio()
     if(regexOperadores.test(tecla)){
         validaExpressao(expressao, tecla);
         return
     }
-    if (verificaTeclasNulas(tecla)){
+    if (verificaTeclasAcao(tecla)){
         return
     }
-    if (verificaOperador(tecla)){
+    if (verificaLetraOperacao(tecla)){
         return
     }
     if(regexNumeros.test(tecla)){
-        verificaInputVazio()
+        input.value +=`${tecla}`
         return
     }
+
     input.setAttribute('disabled', 'true');
 }
 
 
-export function verificaTeclasNulas(tecla){
+export function verificaTeclasAcao(tecla){
     if(tecla === 'ENTER'){
         realizaConta(expressao)
     }
-    if(tecla === 'BACKSPACE' || tecla.includes('ARROW') || tecla == 'SHIFT'){
-        return true
+    if(tecla === 'BACKSPACE'){
+        input.value = input.value.slice(0, input.value.length-1)
     }
     return false
 }
 
 function verificaInputVazio(){
-    if(input.value == 0 && tecla != '0'){
+    console.log(expressao)
+    if(input.value == 0 ||input.value == 'Error' || input.value === 'Undefined'|| input.value === 'Infinity' || input.value == 'Nan' && tecla != '0'){
         input.value = ''
     }
 }
 
-function verificaOperador(tecla){
+
+function verificaLetraOperacao(tecla){
     switch (tecla) {
         case 'E':
+            if(inputCalculadora.value == ''){
+                return
+            }
             input.value +='^'
             break;
         case 'R':
             input.value +='√'
             break;
+        case 'P':
+            if(inputCalculadora.value == ''){
+                return
+            }
+            input.value +='%'
+            break;
         case 'S':
-            input.value +='sin()'
+            input.value +='sin('
             break;
         case 'T':
-            input.value +='tan()'
+            input.value +='tan('
             break;
         case 'C':
-            input.value +='cos()'
+            input.value +='cos('
+            break;
+        case 'X':
+            if(inputCalculadora.value == ''){
+                return
+            }
+            input.value +='*'
+            break;
+        case '/':
+            if(inputCalculadora.value == ''){
+                return
+            }
+            input.value +='/'
+            break;
+        case 'A':
+            input.value =''
             break;
         default:
             break;
