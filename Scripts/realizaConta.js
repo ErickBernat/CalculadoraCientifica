@@ -1,4 +1,4 @@
-import { formataExpressao } from "./validaExpressao.js";
+import { formataExpressao, formataSenCosTan } from "./validaExpressao.js";
 
 const input = document.getElementById('inputCalculadora');
 
@@ -6,15 +6,12 @@ export function realizaConta(expressao){
     try {
         expressao = formataExpressao(expressao);
         let resultado = new Function(`return ${expressao}`);
-    
-        if(resultado == NaN || resultado == undefined){
+        input.value = resultado();
+        if(input.value == NaN || input.value == undefined){
             return input.value = 'Error';
         }
-        input.value = resultado();
     } catch (error) {
         return input.value = 'Error';
     }
-
-    
 }
 

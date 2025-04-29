@@ -18,25 +18,21 @@ export function validaTeclaInput(){
 
 export function verificaTeclaPressionada(tecla){
     expressao = input.value;
-    verificaInputVazio()
+    verificaInputVazio(tecla);
+    verificaTeclasAcao(tecla);
+    verificaLetraOperacao(tecla)
     if(regexOperadores.test(tecla)){
         validaExpressao(expressao, tecla);
         return
     }
-    if (verificaTeclasAcao(tecla)){
-        return
-    }
-    if (verificaLetraOperacao(tecla)){
-        return
-    }
     if(regexNumeros.test(tecla)){
+        if(expressao[expressao.length-1] == ')'){
+            return
+        }
         input.value +=`${tecla}`
         return
     }
-
-    input.setAttribute('disabled', 'true');
 }
-
 
 export function verificaTeclasAcao(tecla){
     if(tecla === 'ENTER'){
@@ -48,31 +44,26 @@ export function verificaTeclasAcao(tecla){
     return false
 }
 
-function verificaInputVazio(){
-    console.log(expressao)
-    if(input.value == 0 ||input.value == 'Error' || input.value === 'Undefined'|| input.value === 'Infinity' || input.value == 'Nan' && tecla != '0'){
+function verificaInputVazio(tecla){
+    if(tecla == 0){
+        return
+    }
+    if(input.value == 0  ||input.value == 'Error' || input.value === 'Undefined'|| input.value === 'Infinity' || input.value == 'Nan' && tecla != '0'){
         input.value = ''
     }
 }
-
 
 function verificaLetraOperacao(tecla){
     expressao = input.value
     switch (tecla) {
         case 'E':
-            if(inputCalculadora.value == ''){
-                return
-            }
-            input.value +='^'
+            validaOperador('^')
             break;
         case 'R':
-            input.value +='√('
+            validaOperador('√(')
             break;
         case 'P':
-            if(inputCalculadora.value == ''){
-                return
-            }
-            input.value +='%'
+            validaOperador('%')
             break;
         case 'S':
             validaSenoCosTang('sin(')
@@ -84,16 +75,10 @@ function verificaLetraOperacao(tecla){
             validaSenoCosTang('cos(')
             break;
         case 'X':
-            if(inputCalculadora.value == ''){
-                return
-            }
-            input.value +='*'
+            validaOperador('*');
             break;
         case '/':
-            if(inputCalculadora.value == ''){
-                return
-            }
-            input.value +='/'
+            validaOperador('/');
             break;
         case 'A':
             input.value =''
@@ -106,6 +91,14 @@ function verificaLetraOperacao(tecla){
 function validaSenoCosTang(operacao){
     if(regexOperadores.test(expressao[expressao.length-1]) || expressao == '' || expressao[expressao.length-1] == '*' && expressao[expressao.length-1] != ')'){
         console.log('entrou')
-         input.value +=operacao
+        input.value +=operacao
     }
+}
+
+function validaOperador(operador){
+    let posicaoUltimoCarater = operador == '√(' ? 2 : 1
+    if(inputCalculadora.value == '' || expressao[expressao.length-posicaoUltimoCarater] == operador[0]){
+        return
+    }
+    input.value +=operador
 }
