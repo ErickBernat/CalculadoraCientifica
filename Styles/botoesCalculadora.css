@@ -8,32 +8,39 @@
 }
 
 .numerosTecladoVirtual{
-    width: 100%;
-    height: 100%;
-
+    width: 50vw;
+    height:40vh;
+    min-width: 600px;
+    min-height: 350px;
+    max-width: 1000px;
     display: grid;
     gap: 5px;
-    
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(6, 1fr);
 
 
     button{
-        background-color:rgb(44, 42, 150);
+        background-color:rgb(43, 42, 116);
         color: white;
         width: 8vw;
+        max-width: 150px;
+        max-height: 100px;
         height: auto;
+        min-width:100px;
         border: none;
         border-radius: 100px;
         cursor: pointer;
-        font-size: 1.3vw;
+        font-size: 1.4rem;
         font-family:'Courier New', Courier, monospace ;
     }
     button:hover{
         background-color: rgb(212, 212, 212);
         color: black;
     }
+}
 
-
+.teclaPressionada{
+        background-color: rgb(212, 212, 212) !important;
+        color: black !important;
 }
 
