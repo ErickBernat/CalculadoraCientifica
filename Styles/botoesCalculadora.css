@@ -21,20 +21,13 @@
 
     button{
         color: white;
-        width: 8vw;
-        max-width: 150px;
-        max-height: 100px;
+        width: auto;
         height: auto;
-        min-width:100px;
         border: none;
         border-radius: 100px;
         cursor: pointer;
         font-size: 1.4rem;
         font-family:'Courier New', Courier, monospace ;
-    }
-    button:hover{
-        background-color: rgb(212, 212, 212) !important;
-        color: black;
     }
 }
 
@@ -43,28 +36,38 @@
 }
 
 .teclaPressionada{
-        background-color: rgb(201, 38, 38) !important;
+        background-color: rgb(212, 212, 212)!important;
         color: black !important;
 }
-.numeros{
-    background-color: #b16969;
-}
 
+
+.numeros{
+    background-color: #7a5959;
+}
+.inativo{
+    cursor: auto !important;
+    background-color: #7a5959;
+}
 
 #ENTER{
     grid-column-start: 4;
     grid-column-end: 6;
-    min-width: 310px;
-    width: 10vw;
+    width: auto;
 }
 
-.teclasMortas{
-    background-color: #662828;
+.teclasAcao{
+    background-color: #b93500;
 }
 
 .operador{
-    background-color: #572e2e;
+    background-color: #3b1818;
 }
+
+.operador:hover,.teclasAcao:hover,.numeros:hover{
+    background-color: rgb(212, 212, 212);
+    color: black;
+}
+
 
 
 .zero{

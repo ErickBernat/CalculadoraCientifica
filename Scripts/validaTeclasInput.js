@@ -7,6 +7,7 @@ const regexNumeros =/^[0-9]*$/;
 const regexOperadores = /[÷x√/\-!()\.+]/;
 let tecla = ''
 let expressao = ''
+let ultimoCaracter = input.value[input.value-1];
 
 export function validaTeclaInput(){
     document.addEventListener('keydown',(evento)=>{

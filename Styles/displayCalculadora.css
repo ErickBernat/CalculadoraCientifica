@@ -30,7 +30,7 @@
         overflow: hidden;
     }
     input:hover{
-        background-color: rgb(123, 121, 255);
+        background-color: #d6d2cb;
         cursor: pointer;
     }
     input::placeholder{

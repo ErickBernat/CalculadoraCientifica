@@ -3,31 +3,30 @@ const regexValidaOperador =  /[+%\-.!*^%/]/
 
 
 export function validaExpressao(expressao, tecla){
-        validaOperadoresExpressao(expressao,tecla);
+        validaOperadoresNaExpressao(expressao,tecla);
 }
 
-export function validaOperadoresExpressao(expressao,tecla){
-    let ultimoCaracterOperador = regexValidaOperador.test(expressao[expressao.length-1]);
+export function validaOperadoresNaExpressao(expressao,tecla){
+    let ultimoCaracter = expressao[expressao.length-1]
+    let ultimoCaracterOperador = regexValidaOperador.test(ultimoCaracter);
     if(expressao == '' && tecla != '(' && tecla != '-' && tecla != '√('){
         return
     }
-    if(expressao[expressao.length-1] == '(' && tecla != ")"  && tecla != "(" &&tecla != "-"){
+    if(ultimoCaracter == '(' && tecla != ")"  && tecla != "(" &&tecla != "-"){
         return
     }
-
-    if(tecla == '(' && ultimoCaracterOperador && expressao[expressao.length-1] != ')'){
+    if(tecla == '(' && ultimoCaracterOperador && ultimoCaracter != ')'){
         inputCalculadora.value +=`${tecla}`
     }
-
-    if(ultimoCaracterOperador && expressao[expressao.length-1] != ')'&& expressao[expressao.length-1] != '('&& expressao[expressao.length-1] != '%'&& expressao[expressao.length-1] != '!'){
+    if(ultimoCaracterOperador && ultimoCaracter != ')'&& ultimoCaracter != '('&& ultimoCaracter != '%'&& ultimoCaracter != '!'){
         return
     }
     inputCalculadora.value +=`${tecla}`;
 }
 
 export function calculaFatorial(numero){
-    let resp = new Function(`return ${numero}`);
-    numero = resp()
+    let respostaExpressao = new Function(`return ${numero}`);
+    numero = respostaExpressao()
     let respostaFatorial = 1;
     for(let contadorFatorial = 1 ; contadorFatorial <=numero ; contadorFatorial++){
         respostaFatorial *=contadorFatorial;
@@ -35,37 +34,23 @@ export function calculaFatorial(numero){
     return respostaFatorial;
 }
 
-export function calculaSeno(seno){
+export function calculaTrigonometria(tipoCalculo,valor){
     const termos = 10;
     let resultado=0;
     let exponesialSeno=0;
     let fatorialContador=0;
     let calculoTermo=0;
-    for(let contador =0 ; contador <termos;contador++){
-            const sinal = Math.pow(-1, contador);
-            exponesialSeno = seno**(2*contador+1);
-            fatorialContador = calculaFatorial(2*contador+1);
+    let defineCalculo = tipoCalculo == 'seno' ? 1 : 0;
+    for(let contadorTermo=0 ; contadorTermo<termos;contadorTermo++){
+            const sinal = Math.pow(-1, contadorTermo);
+            exponesialSeno = valor**(2*contadorTermo+defineCalculo);
+            fatorialContador = calculaFatorial(2*contadorTermo+defineCalculo);
             calculoTermo = sinal * (exponesialSeno/fatorialContador);
             resultado +=  calculoTermo;
     }
     return resultado
 }
 
-export function calculaCosseno(cosseno){
-    const termos = 10;
-    let resultado=0;
-    let exponesialSeno=0;
-    let fatorialContador=0;
-    let calculoTermo=0;
-    for(let contador =0 ; contador <termos;contador++){
-            const sinal = Math.pow(-1, contador);
-            exponesialSeno = cosseno**(2*contador);
-            fatorialContador = calculaFatorial(2*contador);
-            calculoTermo = sinal * (exponesialSeno/fatorialContador);
-            resultado +=  calculoTermo;
-    }
-    return resultado
-}
 
 export function calculaTangente(tangente){
     let seno = calculaSeno(tangente)
