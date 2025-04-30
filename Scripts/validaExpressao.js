@@ -12,6 +12,9 @@ export function validaOperadoresExpressao(expressao,tecla){
     if(expressao == '' && tecla != '(' && tecla != '-' && tecla != '√('){
         return
     }
+    if(expressao[expressao.length-1] == '(' && tecla != ")" &&tecla != "-"){
+        return
+    }
 
     if(tecla == '(' && ultimoCaracterOperador && expressao[expressao.length-1] != ')'){
         inputCalculadora.value +=`${tecla}`

@@ -112,7 +112,7 @@ function trocaLetraOperador(operador){
         input.value +=operador
         return
     }
-    if(inputCalculadora.value == '' || expressao[expressao.length-posicaoUltimoCarater] == operador[0] ){
+    if(inputCalculadora.value == '' || expressao[expressao.length-posicaoUltimoCarater] == operador[0] || expressao[expressao.length-posicaoUltimoCarater] == "(" ){
         return
     }
     input.value +=operador
