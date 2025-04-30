@@ -77,6 +77,30 @@ export function calculaSeno(seno){
     return resultado
 }
 
+export function calculaCosseno(cosseno){
+    let termos = 10;
+    let resultado=0;
+    let exponesialSeno=0;
+    let fatorialContador=0;
+    let calculoTermo=0;
+    for(let contador =0 ; contador <termos;contador++){
+            const sinal = Math.pow(-1, contador);
+            exponesialSeno = cosseno**(2*contador);
+            fatorialContador = calculaFatorial(2*contador);
+            calculoTermo = sinal * (exponesialSeno/fatorialContador);
+            resultado +=  calculoTermo;
+    }
+    return resultado
+}
+
+export function calculaTangente(tangente){
+    let seno = calculaSeno(tangente)
+    let cosseno = calculaCosseno(tangente)
+    let tangente = seno/cosseno
+    return tangente
+}
+
+
 export function formataParenteses(expressao) {
     const abertura = (expressao.match(/\(/g) || []).length;
     const fechamento = (expressao.match(/\)/g) || []).length;
