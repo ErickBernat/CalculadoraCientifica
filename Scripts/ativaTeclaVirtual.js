@@ -6,6 +6,9 @@ export function ativaTeclaVirtual(teclaTeclado){
     teclasVirtuais.forEach(teclaVirtual =>{
         if(verificaTeclaVirtual(teclaVirtual, teclaTeclado)){
             teclaVirtual.classList.add('teclaPressionada');
+            setTimeout(() => {
+                desativaTeclaVirtual()
+            }, 1000);
         };
     })
 }

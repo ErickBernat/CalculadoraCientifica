@@ -99,13 +99,11 @@ function verificaLetraOperacao(tecla){
 }
 
 function validaSenoCosTang(operacao){
-    console.log(expressao)
     if(expressao[expressao.length-1] == ')'){
         return
     }
     if(regexOperadores.test(expressao[expressao.length-1]) || expressao == '' || expressao[expressao.length-1] == '*'){
         input.value +=operacao
-        console.log('entrou')
     }
 }
 

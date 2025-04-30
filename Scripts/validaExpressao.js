@@ -6,7 +6,6 @@ export function validaExpressao(expressao, tecla){
         validaOperadoresExpressao(expressao,tecla);
 }
 
-
 export function validaOperadoresExpressao(expressao,tecla){
     let ultimoCaracterOperador = regexValidaOperador.test(expressao[expressao.length-1]);
     if(expressao == '' && tecla != '(' && tecla != '-' && tecla != '√('){
@@ -25,32 +24,6 @@ export function validaOperadoresExpressao(expressao,tecla){
     }
     inputCalculadora.value +=`${tecla}`;
 }
-
-
-export function formataExpressao(expressao){
-    expressao = expressao.replace(/(?<=[\d%\)])\(/g, '*(');
-    expressao = expressao.replaceAll("sin(","Math.sin(");
-    expressao = expressao.replaceAll("cos(","Math.cos(");
-    expressao = expressao.replaceAll("tan(","Math.tan(");
-    expressao = expressao.replaceAll(/(?<=\d)√/g,"*Math.sqrt");
-    expressao = expressao.replaceAll("√","Math.sqrt");
-    expressao = expressao.replace(/%(\d)/g, '/100*$1');
-    expressao = expressao.replace(/%/g, '/100');
-    expressao = expressao.replaceAll("^","**");
-    expressao = expressao .replace(/(\([\d\+\-\*\/\.]+\)|\d+)(\!)/g, (_, numero) => {
-        return calculaFatorial(numero);
-        });
-    expressao = expressao.replace(/(\d+)!/g, (_, numero) => {
-    return calculaFatorial(numero);
-    });
-    expressao = expressao.replace(/!(?=\d)/g, (_, numero) => {
-        return calculaFatorial(numero) +'*';
-        });
-    expressao = formataParenteses(expressao);
-    return expressao
-}
-
-
 
 export function calculaFatorial(numero){
     let resp = new Function(`return ${numero}`);
@@ -109,3 +82,53 @@ export function formataParenteses(expressao) {
     return faltando > 0 ? expressao + ')'.repeat(faltando) : expressao;
 } 
 
+export function formataExpressao(expressao){
+    expressao = formataParenteseMultiplica(expressao)
+    expressao = formataSenCosTan(expressao)
+    expressao = formataExponencial(expressao)
+    expressao = formataRaiz(expressao)
+    expressao = formataPotencia(expressao)
+    expressao = formataFatorial(expressao)
+    expressao = formataParenteses(expressao);
+    return expressao
+}
+
+function formataSenCosTan(expressao){
+    expressao = expressao.replaceAll("sin(","Math.sin(");
+    expressao = expressao.replaceAll("cos(","Math.cos(");
+    expressao = expressao.replaceAll("tan(","Math.tan(");
+    return expressao
+}
+
+function formataParenteseMultiplica(expressao){
+    expressao = expressao.replace(/(?<=[\d%\)])\(/g, '*(');
+    return expressao
+}
+
+function formataPotencia(expressao){
+    expressao = expressao.replace(/%(\d)/g, '/100*$1');
+    expressao = expressao.replace(/%/g, '/100');
+    return expressao
+}
+
+function formataFatorial(expressao){
+    expressao = expressao .replace(/(\([\d\+\-\*\/\.]+\)|\d+)(\!)/g, (_, numero) => {
+        return calculaFatorial(numero);
+    });
+    expressao = expressao.replace(/(\d+)!/g, (_, numero) => {
+    return calculaFatorial(numero);
+    });
+    expressao = expressao.replace(/!(?=\d)/g, (_, numero) => {
+        return calculaFatorial(numero) +'*';
+    });
+    return expressao
+}
+
+function formataRaiz(expressao){
+    expressao = expressao.replace(/(?<=[\d\)])√/g, '*Math.sqrt');
+    expressao = expressao.replaceAll("√","Math.sqrt");
+    return expressao
+}
+function formataExponencial(expressao){
+    return expressao.replaceAll("^","**");
+}
