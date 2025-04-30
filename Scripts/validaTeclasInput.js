@@ -21,18 +21,27 @@ export function verificaTeclaPressionada(tecla){
     verificaInputVazio(tecla);
     verificaTeclasAcao(tecla);
     verificaLetraOperacao(tecla)
+    validaOperador(expressao, tecla)
+    validaNumeros(expressao,tecla)
+}   
+
+function validaOperador(expressao,tecla){
     if(regexOperadores.test(tecla)){
         validaExpressao(expressao, tecla);
         return
     }
+}
+
+function validaNumeros(expressao,tecla){
+    if(expressao[expressao.length-1] == ')'){
+        return
+    }
     if(regexNumeros.test(tecla)){
-        if(expressao[expressao.length-1] == ')'){
-            return
-        }
         input.value +=`${tecla}`
         return
     }
 }
+
 
 export function verificaTeclasAcao(tecla){
     if(tecla === 'ENTER'){
@@ -45,40 +54,41 @@ export function verificaTeclasAcao(tecla){
 }
 
 function verificaInputVazio(tecla){
-    if(tecla == 0){
+    if(input.value == ''){
+        input.value =0
+    }
+    if(tecla != 0 && input.value =='0' || input.value == 'Error'){
+        input.value = ''
         return
     }
-    if(input.value == 0  ||input.value == 'Error' || input.value === 'Undefined'|| input.value === 'Infinity' || input.value == 'Nan' && tecla != '0'){
+    if(input.value == 'Error'){
         input.value = ''
     }
 }
 
 function verificaLetraOperacao(tecla){
-    expressao = input.value
+    expressao = input.value;
     switch (tecla) {
         case 'E':
-            validaOperador('^')
+            trocaLetraOperador('^');
             break;
         case 'R':
-            validaOperador('√(')
+            trocaLetraOperador('√(');
             break;
         case 'P':
-            validaOperador('%')
+            trocaLetraOperador('%');
             break;
         case 'S':
-            validaSenoCosTang('sin(')
+            validaSenoCosTang('sin(');
             break;
         case 'T':
-            validaSenoCosTang('tan(')
+            validaSenoCosTang('tan(');
             break;
         case 'C':
-            validaSenoCosTang('cos(')
+            validaSenoCosTang('cos(');
             break;
         case 'X':
-            validaOperador('*');
-            break;
-        case '/':
-            validaOperador('/');
+            trocaLetraOperador('*');
             break;
         case 'A':
             input.value =''
@@ -95,9 +105,14 @@ function validaSenoCosTang(operacao){
     }
 }
 
-function validaOperador(operador){
-    let posicaoUltimoCarater = operador == '√(' ? 2 : 1
-    if(inputCalculadora.value == '' || expressao[expressao.length-posicaoUltimoCarater] == operador[0]){
+function trocaLetraOperador(operador){
+    let posicaoUltimoCarater = operador == '√(' ? 2 : 1;
+
+    if(operador == '√('){
+        input.value +=operador
+        return
+    }
+    if(inputCalculadora.value == '' || expressao[expressao.length-posicaoUltimoCarater] == operador[0] || expressao[expressao.length-posicaoUltimoCarater] == "(" ){
         return
     }
     input.value +=operador
