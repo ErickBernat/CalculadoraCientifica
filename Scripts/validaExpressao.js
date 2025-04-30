@@ -12,7 +12,7 @@ export function validaOperadoresExpressao(expressao,tecla){
     if(expressao == '' && tecla != '(' && tecla != '-' && tecla != '√('){
         return
     }
-    if(expressao[expressao.length-1] == '(' && tecla != ")" &&tecla != "-"){
+    if(expressao[expressao.length-1] == '(' && tecla != ")"  && tecla != "(" &&tecla != "-"){
         return
     }
 
@@ -51,6 +51,7 @@ export function formataExpressao(expressao){
 }
 
 
+
 export function calculaFatorial(numero){
     let resp = new Function(`return ${numero}`);
     numero = resp()
@@ -62,7 +63,7 @@ export function calculaFatorial(numero){
 }
 
 export function calculaSeno(seno){
-    let termos = 10;
+    const termos = 10;
     let resultado=0;
     let exponesialSeno=0;
     let fatorialContador=0;
@@ -78,7 +79,7 @@ export function calculaSeno(seno){
 }
 
 export function calculaCosseno(cosseno){
-    let termos = 10;
+    const termos = 10;
     let resultado=0;
     let exponesialSeno=0;
     let fatorialContador=0;
@@ -96,8 +97,8 @@ export function calculaCosseno(cosseno){
 export function calculaTangente(tangente){
     let seno = calculaSeno(tangente)
     let cosseno = calculaCosseno(tangente)
-    let tangente = seno/cosseno
-    return tangente
+    let resposta = seno/cosseno
+    return resposta
 }
 
 
