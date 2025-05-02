@@ -5,9 +5,8 @@ import { validaExpressao } from "./validaExpressao.js";
 const input = document.getElementById('inputCalculadora');
 const regexNumeros =/^[0-9]*$/;
 const regexOperadores = /[÷x√/\-!()\.+]/;
-let tecla = ''
-let expressao = ''
-let ultimoCaracter = input.value[input.value-1];
+let tecla = '';
+let expressao = '';
 
 export function validaTeclaInput(){
     document.addEventListener('keydown',(evento)=>{
@@ -55,10 +54,7 @@ export function verificaTeclasAcao(tecla){
 }
 
 function verificaInputVazio(tecla){
-    if(input.value == ''){
-        input.value =0
-    }
-    if(tecla != 0 && input.value =='0' || input.value == 'Error'){
+    if(tecla != 0 && tecla != '.' && tecla != '/'&& tecla != 'X' && tecla != '-' && tecla != '+' && tecla != 'SHIFT' && input.value =='0' || input.value == 'Error'){
         input.value = ''
         return
     }

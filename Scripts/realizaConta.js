@@ -6,6 +6,7 @@ export function realizaConta(expressao){
     try {
         expressao = formataExpressao(expressao);
         let resultado = new Function(`return ${expressao}`);
+        
         input.value = resultado();
         if(isNaN(input.value) || input.value == 'Infinity'){
             throw new Error("Erro ao fazer o calculo");

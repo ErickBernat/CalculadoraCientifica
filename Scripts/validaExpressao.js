@@ -78,12 +78,6 @@ export function formataExpressao(expressao){
     return expressao
 }
 
-function formataSenCosTan(expressao){
-    expressao = expressao.replaceAll("sin(","Math.sin(");
-    expressao = expressao.replaceAll("cos(","Math.cos(");
-    expressao = expressao.replaceAll("tan(","Math.tan(");
-    return expressao
-}
 
 function formataParenteseMultiplica(expressao){
     expressao = expressao.replace(/(?<=[\d%\)])\(/g, '*(');
@@ -116,4 +110,10 @@ function formataRaiz(expressao){
 }
 function formataExponencial(expressao){
     return expressao.replaceAll("^","**");
+}
+function formataSenCosTan(expressao){
+    expressao = expressao.replaceAll("sin(","Math.sin(");
+    expressao = expressao.replaceAll("cos(","Math.cos(");
+    expressao = expressao.replaceAll("tan(","Math.tan(");
+    return expressao
 }
