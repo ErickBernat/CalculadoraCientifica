@@ -20,6 +20,7 @@
 
 
     button{
+        box-shadow: 4px 4px 0px black;
         color: white;
         width: auto;
         height: auto;
@@ -36,17 +37,17 @@
 }
 
 .teclaPressionada{
-        background-color: rgb(212, 212, 212)!important;
+         box-shadow: inset 8px 8px 0px rgb(8, 7, 7) !important;
         color: black !important;
 }
 
 
 .numeros{
-    background-color: #7a5959;
+    background-color: #631919;
 }
 .inativo{
     cursor: auto !important;
-    background-color: #7a5959;
+    background-color: #631919;
 }
 
 #ENTER{
@@ -56,11 +57,11 @@
 }
 
 .teclasAcao{
-    background-color: #b93500;
+    background-color: #9e0202;
 }
 
 .operador{
-    background-color: #3b1818;
+    background-color: #4e0000;
 }
 
 .operador:hover,.teclasAcao:hover,.numeros:hover{

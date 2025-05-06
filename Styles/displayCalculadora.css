@@ -3,8 +3,10 @@
     height: 20%;
     min-width: 600px;
     border: none;
+    margin: 10px;
     background-color: transparent;
     border-radius: 20px;
+    box-shadow: inset 7px 9px 0px #1d1000;
 
     input{
         width: 100%;
@@ -12,11 +14,12 @@
         font-size: clamp(0.8rem,2rem,2.5rem);
         padding: 20px;
         text-align: end;
-        border: solid 2px rgb(16, 15, 70);
+        border: solid 2px rgb(0, 0, 0);
         outline: none;
         border-radius: 20px;
-        background-color: transparent;
-        color: black;
+        box-shadow: inset 7px 9px 0px #1d1000;
+        color: white;
+        background-color: #14380bb4;
     }
     label{
         position: absolute;
@@ -30,6 +33,7 @@
         overflow: hidden;
     }
     input:hover{
+        box-shadow: inset 7px 9px 0px #1d1000;
         background-color: #d6d2cb;
         cursor: pointer;
     }
