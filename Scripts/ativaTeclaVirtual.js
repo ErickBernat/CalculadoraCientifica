@@ -1,5 +1,5 @@
 const teclasVirtuais = document.querySelectorAll('button');
-
+const tempoTeclaAtiva = 1000;
 
 export function ativaTeclaVirtual(teclaTeclado){
     desativaTeclaVirtual();
@@ -8,7 +8,7 @@ export function ativaTeclaVirtual(teclaTeclado){
             teclaVirtual.classList.add('teclaPressionada');
             setTimeout(() => {
                 desativaTeclaVirtual()
-            }, 1000);
+            },tempoTeclaAtiva);
         };
     })
 }

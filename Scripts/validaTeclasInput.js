@@ -54,7 +54,8 @@ export function verificaTeclasAcao(tecla){
 }
 
 function verificaInputVazio(tecla){
-    if(tecla != 0 && tecla != '.' && tecla != '/'&& tecla != 'X' && tecla != '-' && tecla != '+' && tecla != 'SHIFT' && input.value =='0' || input.value == 'Error'){
+    if(tecla != 0 && tecla != '.' && tecla != '/'&& tecla != 'X' && tecla != '-' &&
+        tecla != '+' && tecla != 'SHIFT' && input.value =='0' || input.value == 'Error'){
         input.value = ''
         return
     }

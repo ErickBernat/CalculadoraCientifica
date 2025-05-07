@@ -1,5 +1,4 @@
 import { calculaFatorial } from "./calculaFatorial.js";
-import { calculaTangente, calculaTrigonometria } from "./calculaTrignonometria.js";
 
 
 const inputCalculadora = document.getElementById('inputCalculadora');
@@ -63,15 +62,9 @@ function formataExponencial(expressao){
 }
 
 function formataSenCosTan(expressao){
-    expressao = expressao.replace(/\bsin\s*\(\s*([^)]+?)\s*\)/g, (_, valor) => {
-        return  calculaTrigonometria('seno',valor);
-    });
-    expressao = expressao.replace(/\bcos\s*\(\s*([^)]+?)\s*\)/g, (_, valor) => {
-        return  calculaTrigonometria('cosseno',valor);
-    });
-    expressao = expressao.replace(/\btan\s*\(\s*([^)]+?)\s*\)/g, (_, valor) => {
-        return  calculaTangente(valor);
-    });
+     expressao = expressao.replace(/\bsin\(/g, 'Math.sin(');
+     expressao = expressao.replace(/\bcos\(/g, 'Math.cos(');
+     expressao = expressao.replace(/\btan\(/g, 'Math.tan(');
     return expressao
 }
 
