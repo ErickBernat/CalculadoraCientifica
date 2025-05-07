@@ -1,7 +1,9 @@
 import { calculaFatorial } from "./calculaFatorial.js";
+import { formataExpressao } from "./validaExpressao.js";
 
 
 export function calculaTrigonometria(tipoCalculo,valor){
+    valor = formataExpressao(valor)
     let respostaExpressao = new Function(`return ${valor}`);
     valor = respostaExpressao()
     const termos = 10;
