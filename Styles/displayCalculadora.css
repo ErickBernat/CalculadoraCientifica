@@ -34,7 +34,7 @@
     }
     input:hover{
         box-shadow: inset 7px 9px 0px #1d1000;
-        background-color: #d6d2cb;
+        background-color: #1a460eb4;
         cursor: pointer;
     }
     input::placeholder{
