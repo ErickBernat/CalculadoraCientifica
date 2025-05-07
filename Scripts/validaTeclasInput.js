@@ -5,8 +5,8 @@ import { validaExpressao } from "./validaExpressao.js";
 const input = document.getElementById('inputCalculadora');
 const regexNumeros =/^[0-9]*$/;
 const regexOperadores = /[÷x√/\-!()\.+]/;
-let tecla = ''
-let expressao = ''
+let tecla = '';
+let expressao = '';
 
 export function validaTeclaInput(){
     document.addEventListener('keydown',(evento)=>{
@@ -54,10 +54,7 @@ export function verificaTeclasAcao(tecla){
 }
 
 function verificaInputVazio(tecla){
-    if(input.value == ''){
-        input.value =0
-    }
-    if(tecla != 0 && input.value =='0' || input.value == 'Error'){
+    if(tecla != 0 && tecla != '.' && tecla != '/'&& tecla != 'X' && tecla != '-' && tecla != '+' && tecla != 'SHIFT' && input.value =='0' || input.value == 'Error'){
         input.value = ''
         return
     }
@@ -99,8 +96,10 @@ function verificaLetraOperacao(tecla){
 }
 
 function validaSenoCosTang(operacao){
-    if(regexOperadores.test(expressao[expressao.length-1]) || expressao == '' || expressao[expressao.length-1] == '*' && expressao[expressao.length-1] != ')'){
-        console.log('entrou')
+    if(expressao[expressao.length-1] == ')'){
+        return
+    }
+    if(regexOperadores.test(expressao[expressao.length-1]) || expressao == '' || expressao[expressao.length-1] == '*'){
         input.value +=operacao
     }
 }

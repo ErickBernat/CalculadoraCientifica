@@ -6,6 +6,7 @@
     <meta name="description" content="Calculadora cientifica">
     <title>CalculadoraCientifica</title>
     <link rel="stylesheet" href="/style.css">
+    <link rel="shortcut icon" href="/Assets/Images/logo.png" type="image/x-icon">
     <script src="/script.js" defer type="module"></script>
 </head>
 <body>
@@ -18,32 +19,37 @@
                 </div>
                 <div class="containerTecladoVirtual">
                     <div class="numerosTecladoVirtual">
-                        <button  id="S">Sin</button>
-                        <button id="(">(</button>
-                        <button id=")">)</button>
-                        <button id="P">&#37</button>
-                        <button id="A">Ac</button>
-                        <button id="C">Cos</button>
-                        <button id="7">7</button>
-                        <button id="8">8</button>
-                        <button id="9">9</button>
-                        <button id="/">&divide</button>
-                        <button id="T">Tan</button>
-                        <button id="4">4</button>
-                        <button id="5">5</button>
-                        <button id="6">6</button>
-                        <button id="X">x</button>
-                        <button id="R">&#8730</button>
-                        <button id="1">1</button>
-                        <button id="2">2</button>
-                        <button id="3">3</button>
-                        <button id="-">-</button>
-                        <button id="!">x!</button>
-                        <button id="0">0</button>
-                        <button id=".">.</button>
-                        <button id="ENTER">=</button>
-                        <button id="+">+</button>
-                        <button id="E">x&#8319</button> 
+                        <button title="Tecla Backspace" id="BACKSPACE" class="teclasAcao">C</button>
+                        <button title="Tecla A" id="A" class="teclasAcao">Ac</button>
+                        <button title="Tecla S" id="S" class="operador">Sin</button>
+                        <button title="Tecla C" id="C" class="operador">Cos</button>
+                        <button title="Tecla T" id="T" class="operador">Tan</button>
+                        <button title="Tecla (" id="(" class="operador">(</button>
+                        <button title="Tecla )" id=")" class="operador">)</button>
+                        <button title="Tecla ." id="." class="operador">.</button> 
+                        <button title="Tecla !" id="!" class="operador">x!</button>
+                        <button title="Tecla R" id="R" class="operador">&#8730</button>
+                        <button title="Tecla 7" id="7" class="numeros">7</button>
+                        <button title="Tecla 8" id="8" class="numeros">8</button>
+                        <button title="Tecla 9" id="9" class="numeros">9</button>
+                        <button title="Tecla E" id="E" class="operador">x&#8319</button> 
+                        <button title="Tecla P" id="P" class="operador">&#37</button>
+                        <button title="Tecla 4" id="4" class="numeros">4</button>
+                        <button title="Tecla 5" id="5" class="numeros">5</button>
+                        <button title="Tecla 6" id="6" class="numeros">6</button>
+                        <button title="Tecla X" id="X" class="operador">x</button>
+                        <button title="Tecla /" id="/" class="operador">&divide</button>
+                        <button title="Tecla 1" id="1" class="numeros">1</button>
+                        <button title="Tecla 2" id="2" class="numeros">2</button>
+                        <button title="Tecla 3" id="3" class="numeros">3</button>
+
+                        <button title="Tecla -" id="-" class="operador">-</button>
+                        <button title="Tecla +"id="+" class="operador">+</button>
+                        <button id="/" class="inativo"></button>
+                        <button title="Tecla 0" id="0" class="numeros zero">0</button>
+                        <button id="/" class="inativo"></button>
+                        <button title="Tecla Enter" id="ENTER" class="teclasAcao">=</button>  
+                        
                     </div>
                 </div>
             </div>
