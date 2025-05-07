@@ -1,16 +1,15 @@
 .containerCalculadora{
     width: 50vw;
     height: 50vh;
-
-    min-width: 500px;
-    min-height: 450px;
-
+    min-width: 700px;
+    min-height: 550px;
+    box-shadow: 15px 15px 0px #1d1000;
     max-width: 1000px;
-    gap: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #b62f17;
     border-radius: 20px;
-
+    border: 4px solid black;
 }

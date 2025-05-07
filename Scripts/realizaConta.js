@@ -1,4 +1,4 @@
-import { formataExpressao} from "./validaExpressao.js";
+import { formataExpressao, formataParenteses} from "./validaExpressao.js";
 
 const input = document.getElementById('inputCalculadora');
 

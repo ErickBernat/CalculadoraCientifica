@@ -20,27 +20,58 @@
 
 
     button{
-        background-color:rgb(43, 42, 116);
+        box-shadow: 4px 4px 0px black;
         color: white;
-        width: 8vw;
-        max-width: 150px;
-        max-height: 100px;
+        width: auto;
         height: auto;
-        min-width:100px;
         border: none;
         border-radius: 100px;
         cursor: pointer;
         font-size: 1.4rem;
         font-family:'Courier New', Courier, monospace ;
     }
-    button:hover{
-        background-color: rgb(212, 212, 212);
-        color: black;
-    }
+}
+
+.numerosTecladoVirtual #soma{
+    place-items: center;
 }
 
 .teclaPressionada{
-        background-color: rgb(212, 212, 212) !important;
+         box-shadow: inset 8px 8px 0px rgb(8, 7, 7) !important;
         color: black !important;
 }
 
+
+.numeros{
+    background-color: #631919;
+}
+.inativo{
+    cursor: auto !important;
+    background-color: #631919;
+}
+
+#ENTER{
+    grid-column-start: 4;
+    grid-column-end: 6;
+    width: auto;
+}
+
+.teclasAcao{
+    background-color: #9e0202;
+}
+
+.operador{
+    background-color: #4e0000;
+}
+
+.operador:hover,.teclasAcao:hover,.numeros:hover{
+    background-color: rgb(212, 212, 212);
+    color: black;
+}
+
+
+
+.zero{
+    grid-column-start: 2;
+    grid-column-end: 2;
+}
